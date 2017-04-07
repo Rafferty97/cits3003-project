@@ -1,0 +1,41 @@
+Please see the README file in the ../MAC_VERSIONS subdirectory for more
+detail. Compared to the files in the ../MAC_VERSIONS subdirectory, the
+differences for the code in this directory are:
+
+libassimp.so.3.1.1 - assimp was compiled as a shared library (or shared
+	object). The setup-once file is therefore different.
+
+Makefile - this file has to be different, of course.
+
+vStart.glsl and fStart.glsl - Unlike the lab exercises, the project
+	requires using the OpenGL 'menus' widget. To get the 
+	scene-start program to work in the lab PCs (for Linux),
+	the two shader files have to be the same as those for the Mac.
+
+setup - instead of setting up the environment variable DYLD_LIBRARY_PATH,
+	we set up the environment variable LD_LIBRARY_PATH instead.
+	However, ou might not need to set up this environment variable.
+
+setup-once - similar to the setup-once in the ../MAC_VERSIONS subdirectory.
+	However, since in the system directory /usr/lib64, there is
+	no file with the name libGLEW.so, I have added a command to
+	create a symbolic link to this shared library.
+
+scene-start.cpp - if you use your own laptop or desktop to do the project,
+	you may need to experiment a little bit to see if you need to
+	uncomment the following lines:
+
+		glutInitContextVersion( 3, 2);
+		glutInitContextProfile( GLUT_CORE_PROFILE );
+ 
+	in the main() function. On the Mac, these lines are not needed. 
+	I found that these lines are not needed on the Linux platform
+	in the CSSE Lab either.
+
+	You do need the line
+		glewInit();
+	on Linux.
+
+
+Du Huynh
+April 2017
